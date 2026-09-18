@@ -26,6 +26,7 @@ lerna-debug.log*
 
 # Temporary Exports & Test Media
 .tempmediaStorage/
+scratch/
 test_*.webm
 test_*.mov
 test_*.mp4

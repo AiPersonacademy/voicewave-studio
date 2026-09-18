@@ -2,9 +2,9 @@
  * src/visualizers/archetypes/SiriWaveRenderer.ts
  *
  * Archetype 1: Apple Siri Chromatic Wave (iOS 18)
- * 4 chromatic ribbons evaluated with longitudinal Gaussian envelope and multi-spectral dispersion,
- * cross-frequency modulation, dynamic line glow and inter-ribbon luminance,
- * and zero-halo premultiplied alpha math.
+ * Authentic multi-harmonic chromatic ribbons (Sapphire, Magenta, Mint, Solar Amber)
+ * with longitudinal Gaussian envelope, distinct wave frequencies, harmonic criss-crossing,
+ * crystalline core filaments, translucent silk membrane fill, and zero-halo premultiplied alpha math.
  */
 
 import { BaseWebGLQuadRenderer } from "../BaseWebGLQuadRenderer";
@@ -37,11 +37,6 @@ uniform vec4 uColor2;
 uniform vec4 uColor3;
 
 const float PI = 3.14159265359;
-const float BASE_FREQ = 1.15;
-const float ABER_FREQ = 1.05;
-const float FALLOFF   = 1.65;
-const float BAND_FILL = 26000.0;
-const float BAND_THICK = 0.075;
 
 void main() {
     vec2 R = uResolution.xy;
@@ -49,110 +44,136 @@ void main() {
     vec2 p = (gl_FragCoord.xy + 0.5) * 2.0 / R - 1.0;
     p.x *= aspect;
     float yScreen = p.y;
-    
-    float waveScale = max(0.55 * uScale, 0.1);
+
+    float waveScale = max(0.62 * uScale, 0.1);
     p /= waveScale;
 
     float t = uTime;
     float isAct = clamp(uAudioActive, 0.0, 1.0);
     float sens = clamp(uSensitivity, 0.2, 3.0);
     float turb = clamp(uTurbulence, 0.0, 2.5);
-    float glowMult = clamp(uGlow, 0.1, 3.0);
+    float glowMult = clamp(uGlow, 0.2, 3.0);
 
-    // Natural calm idle breathing
-    float idleBreath = 0.5 + 0.5 * sin(t * 1.25);
-    
-    // Vocal dynamics
-    float vocalBloom = clamp(uAmp * sens, 0.0, 1.5);
-    float A1 = mix(0.05 + 0.015 * idleBreath, 0.06 + 0.38 * vocalBloom, isAct);
-    
-    float vocalMid = clamp(uMid * sens, 0.0, 1.2);
-    float A2 = A1 + (0.012 + 0.04 * vocalMid) * isAct;
-    
-    // Chromatic dispersion scaled by turbulence and voice activity
-    float aberSpread = mix(0.55, 1.15 + 0.35 * vocalMid, isAct) * (0.6 + 0.4 * turb);
-    
-    // Line parameters
-    float inten = mix(0.011, 0.017 + 0.016 * vocalBloom, isAct) * glowMult;
-    float th = mix(0.02, 0.034, isAct);
-    float soft = mix(0.007, 0.015 + 0.01 * vocalMid, isAct);
+    // Natural calm idle breathing wave - elegant undulating baseline
+    float idleBreath = sin(t * 1.5) * 0.5 + 0.5;
+    float idleAmp = 0.14 + 0.04 * idleBreath;
 
+    // Vocal dynamics with multi-band responsiveness
+    float vocalAmp = clamp(uAmp * sens, 0.0, 1.6);
+    float vocalLow = clamp(uLow * sens, 0.0, 1.5);
+    float vocalMid = clamp(uMid * sens, 0.0, 1.5);
+    float vocalHigh = clamp(uHigh * sens, 0.0, 1.5);
+
+    // Dynamic amplitude for the wave bundle
+    float totalAmp = mix(idleAmp, 0.22 + 0.44 * vocalAmp + 0.14 * vocalLow, isAct);
+
+    // Longitudinal Gaussian & Cosine Envelope - smooth taper at edges
+    float xN = p.x / min(aspect, 1.55);
+    float envCos = cos(PI * 0.5 * clamp(abs(0.68 * xN), 0.0, 1.0));
+    float envGauss = exp(-pow(xN * 1.25, 2.0));
+    float env = envCos * envCos * envGauss;
+
+    // Phase drift
     float drift = uPhase;
 
-    // Longitudinal Gaussian envelope
-    float xN = p.x / min(aspect, 1.0);
-    float env = cos(PI * 0.5 * min(abs(0.9 * xN), 1.0));
-    env *= env;
-
-    float yMain = A1 * env * sin(p.x * BASE_FREQ + drift);
-
-    float bandFillTh = max(BAND_THICK, 1e-4);
-    float bandAmt = 1e-4 * BAND_FILL * inten;
-
-    // Dynamic frequency modulation of palette colors
+    // 4 Apple Siri Spectral Ribbon Hues
     vec3 ribbonColors[4];
-    ribbonColors[0] = mix(uColor0.rgb, vec3(0.1, 0.25, 0.95), 0.2 + 0.3 * uLow);
-    ribbonColors[1] = mix(uColor1.rgb, vec3(0.95, 0.1, 0.55), 0.2 + 0.3 * uMid);
-    ribbonColors[2] = mix(uColor2.rgb, vec3(0.0, 0.95, 0.8), 0.2 + 0.3 * uHigh);
-    ribbonColors[3] = mix(uColor3.rgb, vec3(1.0, 0.7, 0.1), 0.2 + 0.3 * uAmp);
+    ribbonColors[0] = uColor0.rgb; // Sapphire Blue (#0D74FF)
+    ribbonColors[1] = uColor1.rgb; // Vivid Magenta (#F43F5E)
+    ribbonColors[2] = uColor2.rgb; // Mint / Cyan (#00F5A0)
+    ribbonColors[3] = uColor3.rgb; // Solar Amber (#FFB020)
 
-    vec3 num = vec3(0.0);
-    vec3 den = vec3(0.0);
+    // Distinct harmonic frequencies, phase offsets, and amplitude weightings
+    float freqs[4];
+    freqs[0] = 1.20;
+    freqs[1] = 1.95;
+    freqs[2] = 1.55;
+    freqs[3] = 2.65;
+
+    float phaseOffsets[4];
+    phaseOffsets[0] = 0.0;
+    phaseOffsets[1] = 1.70;
+    phaseOffsets[2] = 3.30;
+    phaseOffsets[3] = 4.85;
+
+    float ampScales[4];
+    ampScales[0] = 1.00;
+    ampScales[1] = 0.88 + 0.35 * vocalMid * isAct;
+    ampScales[2] = 0.92 + 0.30 * vocalLow * isAct;
+    ampScales[3] = 0.78 + 0.40 * vocalHigh * isAct;
+
+    vec3 colAcc = vec3(0.0);
+    float yMain = 0.0;
+    float yMin = 1e3;
+    float yMax = -1e3;
 
     for (int s = 0; s < 4; s++) {
-        vec3 hue = ribbonColors[s];
-        den += hue;
+        float f = freqs[s] * (1.0 + 0.08 * turb * sin(t * 0.6 + float(s)));
+        float ph = drift * (0.9 + float(s) * 0.15) + phaseOffsets[s];
+        float ribbonAmp = totalAmp * ampScales[s];
+        
+        // Multi-frequency harmonic ribbon trajectory
+        float yRibbon = ribbonAmp * env * (
+            0.78 * sin(p.x * f + ph) +
+            0.22 * sin(p.x * (f * 1.6) + ph * 1.3)
+        );
 
-        float ab = mix(-aberSpread, aberSpread, float(s) / 3.0);
-        float freqMod = ABER_FREQ + float(s) * 0.04 * turb;
-        float yL = A2 * env * sin(p.x * freqMod + drift + ab);
-        
-        float d = abs(p.y - yL);
-        float lor = 1.0 / (1.0 + (0.02 * d) * (0.02 * d));
-        float line = (inten / (sqrt(d * d + soft * soft) + th)) * exp(-d * d * 18.0);
-        
-        float lo = min(yMain, yL);
-        float hi = max(yMain, yL);
-        float dBand = max(0.0, max(p.y - hi, lo - p.y));
-        float band = (bandAmt / (dBand + bandFillTh)) * exp(-dBand * dBand * 24.0);
-        
-        num += hue * lor * (line + band);
+        yMin = min(yMin, yRibbon);
+        yMax = max(yMax, yRibbon);
+
+        if (s == 0) yMain = yRibbon;
+
+        float d = abs(p.y - yRibbon);
+
+        // Core thin luminous line (crystalline filament), modulated by envelope so ends float cleanly!
+        float coreLine = (0.016 * glowMult * env) / (d * d * 35.0 + d * 4.0 + 0.014);
+
+        // Soft atmospheric ribbon halo
+        float ribbonHalo = (0.010 * glowMult * env) / (d * 8.0 + 0.045);
+
+        // Additive chromatic ribbon light
+        colAcc += ribbonColors[s] * (coreLine * 1.35 + ribbonHalo * 0.65);
     }
-    vec3 col = num / max(den, vec3(0.001));
 
-    // Centerline boost
-    float dM = abs(p.y - yMain);
-    float lorM = 1.0 / (1.0 + (0.02 * dM) * (0.02 * dM));
-    col += (0.55 * inten * lorM / (sqrt(dM * dM + soft * soft) + th)) * exp(-dM * dM * 18.0);
+    // High-energy central white-blue filament (Siri's signature luminous spine)
+    float dSpine = abs(p.y - yMain);
+    float spine = (0.022 * glowMult * env * (0.8 + 0.6 * vocalAmp * isAct)) / (dSpine * dSpine * 70.0 + dSpine * 6.0 + 0.012);
+    vec3 spineColor = mix(vec3(0.92, 0.96, 1.0), uColor2.rgb, 0.25);
+    colAcc += spineColor * spine * 0.95;
 
-    // Luminescence punch
-    float punch = 1.0 + isAct * (0.32 * uAmp);
-    col = pow(max(col * punch, 0.0), vec3(1.4));
+    // Translucent silk membrane fill between ribbons
+    if (p.y >= yMin && p.y <= yMax) {
+        float span = max(yMax - yMin, 0.001);
+        float normY = clamp((p.y - yMin) / span, 0.0, 1.0);
+        vec3 membraneColor = mix(
+            mix(ribbonColors[2], ribbonColors[0], 0.5),
+            mix(ribbonColors[1], ribbonColors[3], 0.5),
+            normY
+        );
+        float membraneAlpha = sin(normY * PI) * (0.10 + 0.16 * vocalAmp * isAct) * env * glowMult;
+        colAcc += membraneColor * membraneAlpha;
+    }
 
-    // Longitudinal falloff
-    float gauss = exp(-pow(xN * FALLOFF, 2.0));
-    col *= gauss;
-
-    // Edge screen mask to prevent boundary clamping
+    // Edge screen mask to prevent boundary clipping
     float xScreen = (gl_FragCoord.x + 0.5) * 2.0 / R.x - 1.0;
     float emX = clamp((abs(xScreen) - 1.0) / -0.15, 0.0, 1.0);
-    float emT = clamp((abs(yScreen) - 1.0) / -0.4, 0.0, 1.0);
-    col *= (emX * emX * (3.0 - 2.0 * emX)) * (emT * emT * (3.0 - 2.0 * emT));
+    float emY = clamp((abs(yScreen) - 1.0) / -0.35, 0.0, 1.0);
+    colAcc *= (emX * emX * (3.0 - 2.0 * emX)) * (emY * emY * (3.0 - 2.0 * emY));
 
-    // Clamp col to [0, 1] to guarantee zero-halo premultiplied alpha math
-    col = clamp(col, 0.0, 1.0);
+    // Clamp colAcc to [0, 1] for zero-halo premultiplied alpha math
+    vec3 finalCol = clamp(colAcc, 0.0, 1.0);
 
-    float lum = max(col.r, max(col.g, col.b));
-    float alpha = smoothstep(0.005, 0.045, lum) * clamp(lum * 1.85, 0.0, 1.0);
-    
-    // High frequency dither
+    float lum = max(finalCol.r, max(finalCol.g, finalCol.b));
+    float alpha = smoothstep(0.004, 0.04, lum) * clamp(lum * 1.6, 0.0, 1.0);
+
+    // High-frequency dither to prevent banding
     float dither = (fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) / 255.0;
 
     if (uTransparent > 0.5) {
-        vec3 rgb = max(vec3(0.0), col * alpha + dither * alpha);
+        vec3 rgb = max(vec3(0.0), finalCol * alpha + dither * alpha);
         gl_FragColor = vec4(rgb, alpha);
     } else {
-        vec3 rgb = max(vec3(0.0), col + dither);
+        vec3 rgb = max(vec3(0.0), finalCol + dither);
         gl_FragColor = vec4(rgb, 1.0);
     }
 }

@@ -59,9 +59,9 @@ Built with **React 19**, **WebGL 2.0**, **Direct Form II Transposed Biquad Filte
 
 | Archetype | Description | Technology | Preview |
 | :--- | :--- | :--- | :--- |
-| **Apple Siri Chromatic Wave (iOS 18)** | 5 multi-harmonic sine waves with chromatic aberration (Sapphire, Mint, Magenta, Amber) and vocal bloom. | WebGL GLSL Fragment Shader | *(Hero Preview Above)* |
+| **Apple Siri Chromatic Wave (iOS 18)** | 4 multi-harmonic sine waves with chromatic aberration (Sapphire, Magenta, Mint, Solar Amber), crystalline filaments, and vocal bloom. | WebGL GLSL Fragment Shader | [View Screenshot](docs/screenshots/archetype-siri-wave.png) |
+| **Gemini Live Fluid Metaballs** | 4 vibrant liquid drops in Google quad-colors (Blue, Red, Green, Yellow) that orbit and coalesce via smooth-min SDF upon speech. | WebGL 2D Distance Field | [View Screenshot](docs/screenshots/archetype-gemini-metaballs.png) |
 | **ChatGPT Fluid 3D Voice Orb** | Raymarched organic sphere with 3D simplex noise displacement, subsurface luminescence, and breathing. | WebGL Raymarching Shader | [View Screenshot](docs/screenshots/archetype-chatgpt-orb.png) |
-| **Gemini Live Fluid Metaballs** | 4 multi-colored liquid drops that orbit in idle state and coalesce into an elastic blob driven by speech. | WebGL 2D Distance Field | [View Screenshot](docs/screenshots/archetype-gemini-metaballs.png) |
 | **Concentric Acoustic Rings** | Smooth pulsing acoustic radar shockwaves expanding outward with harmonic decay. | WebGL Radial Shockwave Shader | Vector Wavefronts |
 | **Acoustic Particle Cymatics** | 3,072+ point-sprite particles forming Ernst Chladni 2D nodal standing wave resonance patterns. | WebGL Point-Sprite GPU System | [View Screenshot](docs/screenshots/archetype-cymatics.png) |
 | **Neomorphic Glass Soundbars** | 28 Apple Music pill bars driven by 2nd-order underdamped spring-damper equations with glass sheen. | Canvas 2D / Physical Spring Simulation | [View Screenshot](docs/screenshots/archetype-soundbars.png) |
@@ -74,12 +74,22 @@ Built with **React 19**, **WebGL 2.0**, **Direct Form II Transposed Biquad Filte
 <table>
   <tr>
     <td align="center" width="50%">
+      <b>Apple Siri Chromatic Wave (iOS 18)</b><br/>
+      <img src="docs/screenshots/archetype-siri-wave.png" alt="Apple Siri Chromatic Wave" width="100%" />
+    </td>
+    <td align="center" width="50%">
+      <b>Gemini Live Fluid Metaballs</b><br/>
+      <img src="docs/screenshots/archetype-gemini-metaballs.png" alt="Google Gemini Live Fluid Metaballs" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
       <b>ChatGPT Fluid 3D Voice Orb</b><br/>
       <img src="docs/screenshots/archetype-chatgpt-orb.png" alt="ChatGPT Voice Orb" width="100%" />
     </td>
     <td align="center" width="50%">
-      <b>Gemini Live Fluid Metaballs</b><br/>
-      <img src="docs/screenshots/archetype-gemini-metaballs.png" alt="Gemini Metaballs" width="100%" />
+      <b>Neomorphic Glass Soundbars</b><br/>
+      <img src="docs/screenshots/archetype-soundbars.png" alt="Glass Soundbars" width="100%" />
     </td>
   </tr>
   <tr>
@@ -88,8 +98,8 @@ Built with **React 19**, **WebGL 2.0**, **Direct Form II Transposed Biquad Filte
       <img src="docs/screenshots/archetype-cymatics.png" alt="Cymatics Standing Waves" width="100%" />
     </td>
     <td align="center" width="50%">
-      <b>Neomorphic Glass Soundbars</b><br/>
-      <img src="docs/screenshots/archetype-soundbars.png" alt="Glass Soundbars" width="100%" />
+      <b>visionOS VoiceWave Studio</b><br/>
+      <img src="docs/screenshots/hero-studio-dark.png" alt="VoiceWave Studio Interface" width="100%" />
     </td>
   </tr>
 </table>
