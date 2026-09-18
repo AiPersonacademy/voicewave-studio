@@ -1,0 +1,56 @@
+{
+  "name": "voicewave-studio",
+  "version": "1.0.0",
+  "description": "Apple-grade Voice User Interface (VUI) animation generator with sample-accurate audio sync and transparent broadcast export (ProRes 4444, WebM Alpha, PNG Sequence, Chroma MP4).",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "vui",
+    "voice-user-interface",
+    "siri-wave",
+    "webgl",
+    "audio-reactive",
+    "audio-visualizer",
+    "prores-4444",
+    "webm-alpha",
+    "apple-design",
+    "visionos",
+    "react-19",
+    "tailwindcss",
+    "typescript"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "server:converter": "node converter-server.js"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "fflate": "^0.8.3",
+    "lucide-react": "^1.45.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0",
+    "webm-muxer": "^5.1.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^24.13.4",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "autoprefixer": "^10.6.0",
+    "oxlint": "^1.81.0",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.0"
+  }
+}
