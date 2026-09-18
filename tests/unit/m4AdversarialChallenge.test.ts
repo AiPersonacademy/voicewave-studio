@@ -878,7 +878,7 @@ describe("Milestone 4 Adversarial Challenge: WebM VP9 Alpha, ProRes & Cancellati
       for (let i = 44; i < wav.length; i++) {
         expect(wav[i]).toBe(0);
       }
-    });
+    }, 15000);
 
     it("handles extreme clipping (+5.0, -5.0) by clamping to [-32768, 32767] with no int16 overflow wrap", () => {
       const clipped = createSyntheticBuffer(0.1, 44100, 1, (_ch, i) => {

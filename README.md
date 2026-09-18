@@ -23,7 +23,7 @@ An Apple-grade web application for generating, previewing, and rendering broadca
 
 <br />
 
-[Features](#-key-features) • [Visual Archetypes](#-8-vui-visual-archetypes) • [Audio DSP Engine](#-audio-dsp--ballistics-engine) • [Export Pipeline](#-multi-engine-transparent-export-pipeline) • [Quickstart](#-quickstart) • [Architecture](#-project-architecture)
+[🚀 **Open Live Web App**](https://aipersonacademy.github.io/voicewave-studio/) • [Features](#-key-features) • [Visual Archetypes](#-8-vui-visual-archetypes) • [Audio DSP Engine](#-audio-dsp--ballistics-engine) • [Export Pipeline](#-multi-engine-transparent-export-pipeline) • [Quickstart](#-quickstart) • [Architecture](#-project-architecture)
 
 </div>
 
@@ -57,52 +57,54 @@ Built with **React 19**, **WebGL 2.0**, **Direct Form II Transposed Biquad Filte
 
 ## 🎨 8 VUI Visual Archetypes
 
-| Archetype | Description | Technology | Preview |
+| Archetype | Description | Technology | Live Preview |
 | :--- | :--- | :--- | :--- |
-| **Apple Siri Chromatic Wave (iOS 18)** | 4 multi-harmonic sine waves with chromatic aberration (Sapphire, Magenta, Mint, Solar Amber), crystalline filaments, and vocal bloom. | WebGL GLSL Fragment Shader | [View Screenshot](docs/screenshots/archetype-siri-wave.png) |
-| **Gemini Live Fluid Metaballs** | 4 vibrant liquid drops in Google quad-colors (Blue, Red, Green, Yellow) that orbit and coalesce via smooth-min SDF upon speech. | WebGL 2D Distance Field | [View Screenshot](docs/screenshots/archetype-gemini-metaballs.png) |
-| **ChatGPT Fluid 3D Voice Orb** | Raymarched organic sphere with 3D simplex noise displacement, subsurface luminescence, and breathing. | WebGL Raymarching Shader | [View Screenshot](docs/screenshots/archetype-chatgpt-orb.png) |
-| **Concentric Acoustic Rings** | Smooth pulsing acoustic radar shockwaves expanding outward with harmonic decay. | WebGL Radial Shockwave Shader | Vector Wavefronts |
-| **Acoustic Particle Cymatics** | 3,072+ point-sprite particles forming Ernst Chladni 2D nodal standing wave resonance patterns. | WebGL Point-Sprite GPU System | [View Screenshot](docs/screenshots/archetype-cymatics.png) |
-| **Neomorphic Glass Soundbars** | 28 Apple Music pill bars driven by 2nd-order underdamped spring-damper equations with glass sheen. | Canvas 2D / Physical Spring Simulation | [View Screenshot](docs/screenshots/archetype-soundbars.png) |
-| **Cyberpunk AI Core / Sci-Fi HUD** | Concentric circular reticles with live oscilloscope waveform rings and frequency counters. | Canvas 2D Vector Reticle Engine | Oscilloscope Reticle |
+| **Apple Siri Chromatic Wave (iOS 18)** | 4 multi-harmonic sine waves with chromatic aberration (Sapphire, Magenta, Mint, Solar Amber), crystalline filaments, and vocal bloom. | WebGL GLSL Fragment Shader | [Animated Preview](docs/screenshots/archetype-siri-wave.gif) • [PNG](docs/screenshots/archetype-siri-wave.png) |
+| **Gemini Live Fluid Metaballs** | 4 vibrant liquid drops in Google quad-colors (Blue, Red, Green, Yellow) that orbit and coalesce via smooth-min SDF upon speech. | WebGL 2D Distance Field | [Animated Preview](docs/screenshots/archetype-gemini-metaballs.gif) • [PNG](docs/screenshots/archetype-gemini-metaballs.png) |
+| **ChatGPT Fluid 3D Voice Orb** | Raymarched organic sphere with 3D simplex noise displacement, subsurface luminescence, and breathing. | WebGL Raymarching Shader | [Animated Preview](docs/screenshots/archetype-chatgpt-orb.gif) • [PNG](docs/screenshots/archetype-chatgpt-orb.png) |
+| **Neomorphic Glass Soundbars** | 28 Apple Music pill bars driven by 2nd-order underdamped spring-damper equations with glass sheen. | Canvas 2D / Physical Spring Simulation | [Animated Preview](docs/screenshots/archetype-soundbars.gif) • [PNG](docs/screenshots/archetype-soundbars.png) |
+| **Acoustic Particle Cymatics** | 3,072+ point-sprite particles forming Ernst Chladni 2D nodal standing wave resonance patterns. | WebGL Point-Sprite GPU System | [Animated Preview](docs/screenshots/archetype-cymatics.gif) • [PNG](docs/screenshots/archetype-cymatics.png) |
+| **Concentric Acoustic Shockwaves** | Smooth pulsing acoustic radar shockwaves expanding outward with harmonic decay. | WebGL Radial Shockwave Shader | [Animated Preview](docs/screenshots/archetype-concentric-rings.gif) • [PNG](docs/screenshots/archetype-concentric-rings.png) |
+| **Cyberpunk AI Core / Sci-Fi HUD** | Concentric circular reticles with live oscilloscope waveform rings and frequency counters. | Canvas 2D Vector Reticle Engine | Vector Reticle |
 | **iOS Perimeter Edge Glow** | Ethereal chromatic gradient breathing along the display perimeter, pulsing to vocal transients. | WebGL Screen-Space Perimeter Shader | Border Glow |
 
-### 📸 Visual Archetypes Gallery
+### 📸 Visual Archetypes Live Gallery
 
 <div align="center">
 <table>
   <tr>
     <td align="center" width="50%">
       <b>Apple Siri Chromatic Wave (iOS 18)</b><br/>
-      <img src="docs/screenshots/archetype-siri-wave.png" alt="Apple Siri Chromatic Wave" width="100%" />
+      <img src="docs/screenshots/archetype-siri-wave.gif" alt="Apple Siri Chromatic Wave" width="100%" />
     </td>
     <td align="center" width="50%">
-      <b>Gemini Live Fluid Metaballs</b><br/>
-      <img src="docs/screenshots/archetype-gemini-metaballs.png" alt="Google Gemini Live Fluid Metaballs" width="100%" />
+      <b>Google Gemini Live Fluid Metaballs</b><br/>
+      <img src="docs/screenshots/archetype-gemini-metaballs.gif" alt="Google Gemini Live Fluid Metaballs" width="100%" />
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
       <b>ChatGPT Fluid 3D Voice Orb</b><br/>
-      <img src="docs/screenshots/archetype-chatgpt-orb.png" alt="ChatGPT Voice Orb" width="100%" />
+      <img src="docs/screenshots/archetype-chatgpt-orb.gif" alt="ChatGPT Voice Orb" width="100%" />
     </td>
     <td align="center" width="50%">
       <b>Neomorphic Glass Soundbars</b><br/>
-      <img src="docs/screenshots/archetype-soundbars.png" alt="Glass Soundbars" width="100%" />
+      <img src="docs/screenshots/archetype-soundbars.gif" alt="Neomorphic Glass Soundbars" width="100%" />
     </td>
   </tr>
   <tr>
     <td align="center" width="50%">
       <b>Acoustic Particle Cymatics</b><br/>
-      <img src="docs/screenshots/archetype-cymatics.png" alt="Cymatics Standing Waves" width="100%" />
+      <img src="docs/screenshots/archetype-cymatics.gif" alt="Cymatics Standing Waves" width="100%" />
     </td>
     <td align="center" width="50%">
-      <b>visionOS VoiceWave Studio</b><br/>
-      <img src="docs/screenshots/hero-studio-dark.png" alt="VoiceWave Studio Interface" width="100%" />
+      <b>Concentric Acoustic Shockwaves</b><br/>
+      <img src="docs/screenshots/archetype-concentric-rings.gif" alt="Concentric Acoustic Shockwaves" width="100%" />
     </td>
   </tr>
 </table>
+
+<br />
 
 <b>visionOS Preset Manager (14 Factory Presets & JSON Import/Export)</b><br/>
 <img src="docs/screenshots/preset-manager-modal.png" alt="Preset Manager Modal" width="85%" />

@@ -151,6 +151,7 @@ export function proresMiddleware() {
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "./",
   plugins: [react(), proresMiddleware()],
   server: {
     port: 5174,
