@@ -2,9 +2,17 @@
   "name": "voicewave-studio",
   "version": "1.0.0",
   "description": "Apple-grade Voice User Interface (VUI) animation generator with sample-accurate audio sync and transparent broadcast export (ProRes 4444, WebM Alpha, PNG Sequence, Chroma MP4).",
-  "private": true,
+  "private": false,
   "type": "module",
   "license": "MIT",
+  "homepage": "https://github.com/AiPersonacademy/voicewave-studio#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AiPersonacademy/voicewave-studio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AiPersonacademy/voicewave-studio/issues"
+  },
   "keywords": [
     "vui",
     "voice-user-interface",

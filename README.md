@@ -17,6 +17,12 @@ An Apple-grade web application for generating, previewing, and rendering broadca
 [![Playwright](https://img.shields.io/badge/Playwright-E2E_Certified-2EAD33?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg?style=flat-square)](LICENSE)
 
+<br />
+
+<img src="docs/screenshots/hero-studio-dark.png" alt="VoiceWave Studio Interface" width="100%" style="border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);" />
+
+<br />
+
 [Features](#-key-features) • [Visual Archetypes](#-8-vui-visual-archetypes) • [Audio DSP Engine](#-audio-dsp--ballistics-engine) • [Export Pipeline](#-multi-engine-transparent-export-pipeline) • [Quickstart](#-quickstart) • [Architecture](#-project-architecture)
 
 </div>
@@ -51,16 +57,47 @@ Built with **React 19**, **WebGL 2.0**, **Direct Form II Transposed Biquad Filte
 
 ## 🎨 8 VUI Visual Archetypes
 
-| Archetype | Description | Technology |
-| :--- | :--- | :--- |
-| **Apple Siri Chromatic Wave (iOS 18)** | 5 multi-harmonic sine waves with chromatic aberration (Sapphire, Mint, Magenta, Amber) and vocal bloom. | WebGL GLSL Fragment Shader |
-| **ChatGPT Fluid 3D Voice Orb** | Raymarched organic sphere with 3D simplex noise displacement, subsurface luminescence, and breathing. | WebGL Raymarching Shader |
-| **Gemini Live Fluid Metaballs** | 4 multi-colored liquid drops that orbit in idle state and coalesce into an elastic blob driven by speech. | WebGL 2D Distance Field |
-| **Concentric Acoustic Rings** | Smooth pulsing acoustic radar shockwaves expanding outward with harmonic decay. | WebGL Radial Shockwave Shader |
-| **Acoustic Particle Cymatics** | 3,072+ point-sprite particles forming Ernst Chladni 2D nodal standing wave resonance patterns. | WebGL Point-Sprite GPU System |
-| **Neomorphic Glass Soundbars** | 28 Apple Music pill bars driven by 2nd-order underdamped spring-damper equations with glass sheen. | Canvas 2D / Physical Spring Simulation |
-| **Cyberpunk AI Core / Sci-Fi HUD** | Concentric circular reticles with live oscilloscope waveform rings and frequency counters. | Canvas 2D Vector Reticle Engine |
-| **iOS Perimeter Edge Glow** | Ethereal chromatic gradient breathing along the display perimeter, pulsing to vocal transients. | WebGL Screen-Space Perimeter Shader |
+| Archetype | Description | Technology | Preview |
+| :--- | :--- | :--- | :--- |
+| **Apple Siri Chromatic Wave (iOS 18)** | 5 multi-harmonic sine waves with chromatic aberration (Sapphire, Mint, Magenta, Amber) and vocal bloom. | WebGL GLSL Fragment Shader | *(Hero Preview Above)* |
+| **ChatGPT Fluid 3D Voice Orb** | Raymarched organic sphere with 3D simplex noise displacement, subsurface luminescence, and breathing. | WebGL Raymarching Shader | [View Screenshot](docs/screenshots/archetype-chatgpt-orb.png) |
+| **Gemini Live Fluid Metaballs** | 4 multi-colored liquid drops that orbit in idle state and coalesce into an elastic blob driven by speech. | WebGL 2D Distance Field | [View Screenshot](docs/screenshots/archetype-gemini-metaballs.png) |
+| **Concentric Acoustic Rings** | Smooth pulsing acoustic radar shockwaves expanding outward with harmonic decay. | WebGL Radial Shockwave Shader | Vector Wavefronts |
+| **Acoustic Particle Cymatics** | 3,072+ point-sprite particles forming Ernst Chladni 2D nodal standing wave resonance patterns. | WebGL Point-Sprite GPU System | [View Screenshot](docs/screenshots/archetype-cymatics.png) |
+| **Neomorphic Glass Soundbars** | 28 Apple Music pill bars driven by 2nd-order underdamped spring-damper equations with glass sheen. | Canvas 2D / Physical Spring Simulation | [View Screenshot](docs/screenshots/archetype-soundbars.png) |
+| **Cyberpunk AI Core / Sci-Fi HUD** | Concentric circular reticles with live oscilloscope waveform rings and frequency counters. | Canvas 2D Vector Reticle Engine | Oscilloscope Reticle |
+| **iOS Perimeter Edge Glow** | Ethereal chromatic gradient breathing along the display perimeter, pulsing to vocal transients. | WebGL Screen-Space Perimeter Shader | Border Glow |
+
+### 📸 Visual Archetypes Gallery
+
+<div align="center">
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <b>ChatGPT Fluid 3D Voice Orb</b><br/>
+      <img src="docs/screenshots/archetype-chatgpt-orb.png" alt="ChatGPT Voice Orb" width="100%" />
+    </td>
+    <td align="center" width="50%">
+      <b>Gemini Live Fluid Metaballs</b><br/>
+      <img src="docs/screenshots/archetype-gemini-metaballs.png" alt="Gemini Metaballs" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <b>Acoustic Particle Cymatics</b><br/>
+      <img src="docs/screenshots/archetype-cymatics.png" alt="Cymatics Standing Waves" width="100%" />
+    </td>
+    <td align="center" width="50%">
+      <b>Neomorphic Glass Soundbars</b><br/>
+      <img src="docs/screenshots/archetype-soundbars.png" alt="Glass Soundbars" width="100%" />
+    </td>
+  </tr>
+</table>
+
+<b>visionOS Preset Manager (14 Factory Presets & JSON Import/Export)</b><br/>
+<img src="docs/screenshots/preset-manager-modal.png" alt="Preset Manager Modal" width="85%" />
+
+</div>
 
 ---
 
@@ -133,7 +170,7 @@ Built with **React 19**, **WebGL 2.0**, **Direct Form II Transposed Biquad Filte
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/your-username/voicewave-studio.git
+git clone https://github.com/AiPersonacademy/voicewave-studio.git
 cd voicewave-studio
 npm install
 ```
@@ -194,13 +231,16 @@ Enforces zero lint warnings and zero errors via [Oxlint](https://oxc.rs).
 ```
 voicewave-studio/
 ├── converter-server.js           # Dedicated Node.js FFmpeg ProRes converter service (port 5175)
-├── index.html                    # Application entry point
+├── index.html                    # Application entry point with rich SEO & JSON-LD
 ├── package.json                  # Dependencies, scripts, and package metadata
 ├── tailwind.config.js            # Tailwind CSS configuration with custom visionOS tokens
 ├── tsconfig.json                 # TypeScript compiler configuration
 ├── vite.config.ts                # Vite config with integrated ProRes/Chroma FFmpeg middleware
 ├── vitest.config.ts              # Vitest unit testing configuration
 ├── playwright.config.ts          # Playwright E2E configuration with SwiftShader WebGL
+│
+├── docs/                         # Documentation & Media Assets
+│   └── screenshots/              # High-DPI Retina UI and visual archetype captures
 │
 ├── public/
 │   ├── favicon.svg               # Vector brand logo

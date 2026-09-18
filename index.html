@@ -1,12 +1,65 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>voice-animator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>VoiceWave Studio — Apple & visionOS Voice User Interface (VUI) Animation Studio</title>
+    <meta name="title" content="VoiceWave Studio — Apple & visionOS Voice User Interface (VUI) Animation Studio" />
+    <meta name="description" content="Commercial-grade Apple and visionOS Voice User Interface (VUI) animation generator with sample-accurate audio sync and broadcast-ready transparent export (ProRes 4444 with 12-bit alpha, WebM VP9 Alpha, PNG Sequence ZIP, Chroma MP4)." />
+    <meta name="keywords" content="voice user interface, vui animation, siri wave, chatgpt voice orb, gemini live metaballs, audio reactive visualizer, prores 4444 alpha, webm alpha, motion design, apple visionos ui, sound reactive animation, webgl audio visualizer, transparent video export, podcast waveform" />
+    <meta name="author" content="VoiceWave Studio" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://aipersonacademy.github.io/voicewave-studio/" />
+    <meta name="theme-color" content="#070709" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aipersonacademy.github.io/voicewave-studio/" />
+    <meta property="og:title" content="VoiceWave Studio — Apple & visionOS VUI Animation Studio" />
+    <meta property="og:description" content="Generate, preview, and render broadcast-ready, transparent Voice User Interface (VUI) animations synced to speech and audio with sample-accurate ballistics." />
+    <meta property="og:image" content="https://raw.githubusercontent.com/AiPersonacademy/voicewave-studio/main/docs/screenshots/hero-studio-dark.png" />
+    <meta property="og:site_name" content="VoiceWave Studio" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://aipersonacademy.github.io/voicewave-studio/" />
+    <meta name="twitter:title" content="VoiceWave Studio — Apple & visionOS VUI Animation Studio" />
+    <meta name="twitter:description" content="Generate, preview, and render broadcast-ready, transparent Voice User Interface (VUI) animations synced to speech and audio with sample-accurate ballistics." />
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/AiPersonacademy/voicewave-studio/main/docs/screenshots/hero-studio-dark.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "VoiceWave Studio",
+        "url": "https://aipersonacademy.github.io/voicewave-studio/",
+        "description": "Commercial-grade Apple and visionOS Voice User Interface (VUI) animation generator with sample-accurate audio sync and broadcast-ready transparent export.",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires WebGL 2.0 and Web Audio API support",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "8 VUI Visual Archetypes (Siri Wave, ChatGPT Orb, Gemini Metaballs, Acoustic Rings, Cymatics Particles, Glass Soundbars, Cyberpunk HUD, Perimeter Glow)",
+          "Direct Form II Transposed 3-Band Biquad Audio DSP",
+          "Fast Plosive Attack (<10ms) with C1 Continuity Decay",
+          "Apple ProRes 4444 (.mov) with 12-bit Alpha Export",
+          "Browser-Native WebM VP9 Alpha Video Export",
+          "Lossless PNG Sequence (.zip) Streaming Export",
+          "visionOS Frosted Glass Interface with 1:1, 16:9, and 9:16 Framing"
+        ]
+      }
+    </script>
   </head>
-  <body>
+  <body class="bg-[#070709] text-zinc-100 antialiased overflow-x-hidden">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
